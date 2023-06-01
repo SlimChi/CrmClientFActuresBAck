@@ -1,12 +1,8 @@
 package clientcrm.frcs.controller;
 
-import clientcrm.frcs.dto.InvoiceDto;
 import clientcrm.frcs.dto.UserDto;
-import clientcrm.frcs.services.mapperServiceImpl.UserServiceImpl;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.servlet.http.HttpServletRequest;
+import clientcrm.frcs.services.serviceImpl.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

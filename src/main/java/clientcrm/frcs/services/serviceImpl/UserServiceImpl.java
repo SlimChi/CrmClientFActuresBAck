@@ -1,4 +1,4 @@
-package clientcrm.frcs.services.mapperServiceImpl;
+package clientcrm.frcs.services.serviceImpl;
 
 import clientcrm.frcs.Exceptions.UserNotFoundException;
 import clientcrm.frcs.dto.UserDto;

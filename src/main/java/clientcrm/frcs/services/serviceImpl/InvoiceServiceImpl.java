@@ -1,4 +1,4 @@
-package clientcrm.frcs.services.mapperServiceImpl;
+package clientcrm.frcs.services.serviceImpl;
 
 import clientcrm.frcs.dto.InvoiceDto;
 import clientcrm.frcs.entities.Customer;

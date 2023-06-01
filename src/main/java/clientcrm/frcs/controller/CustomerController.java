@@ -2,9 +2,7 @@ package clientcrm.frcs.controller;
 
 import clientcrm.frcs.dto.CustomerDto;
 import clientcrm.frcs.dto.InvoiceDto;
-import clientcrm.frcs.dto.UserDto;
-import clientcrm.frcs.services.mapperServiceImpl.CustomerServiceImpl;
-import clientcrm.frcs.services.mapperServiceImpl.UserServiceImpl;
+import clientcrm.frcs.services.serviceImpl.CustomerServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
