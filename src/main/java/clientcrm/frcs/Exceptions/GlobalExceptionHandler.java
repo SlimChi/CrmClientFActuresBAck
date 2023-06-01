@@ -4,6 +4,7 @@ package clientcrm.frcs.Exceptions;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
@@ -13,6 +14,18 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+  @ExceptionHandler({ObjectValidationException.class})
+  public ResponseEntity<ExceptionRepresentation> handleException(ObjectValidationException exception) {
+    ExceptionRepresentation representation = ExceptionRepresentation.builder()
+            .errorMessage("Object not valid exception has occurred")
+            .errorSource(exception.getViolationSource())
+            .validationErrors(exception.getViolations())
+            .build();
+    return ResponseEntity
+            .status(HttpStatus.BAD_REQUEST)
+            .contentType(MediaType.APPLICATION_JSON)
+            .body(representation);
+  }
 
   @ExceptionHandler(EntityNotFoundException.class)
   public ResponseEntity<ExceptionRepresentation> handleException(EntityNotFoundException exception) {

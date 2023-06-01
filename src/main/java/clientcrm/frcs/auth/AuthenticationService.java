@@ -4,6 +4,7 @@ import clientcrm.frcs.config.JwtService;
 import clientcrm.frcs.entities.Role;
 import clientcrm.frcs.entities.User;
 import clientcrm.frcs.repositories.UserRepository;
+import clientcrm.frcs.validators.ObjectsValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -23,13 +24,14 @@ public class AuthenticationService {
 
     private final UserRepository repository;
     private final PasswordEncoder passwordEncoder;
-
+    private final ObjectsValidator validator;
     private final JwtService jwtService;
 
     private final AuthenticationManager authenticationManager;
 
 
     public AuthenticationResponse registerUser(RegisterRequest request) {
+        validator.validate(request);
         Optional<User> userOptional = repository.findUserByEmail(request.getEmail());
 
         if(userOptional.isPresent())
@@ -58,7 +60,7 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponse registerAdmin(RegisterRequest request) {
-
+        validator.validate(request);
         Optional<User> userOptional = repository.findUserByEmail(request.getEmail());
 
         if(userOptional.isPresent())
